@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: mscloudgateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://${KEYCLOAK_SERVER}:${KEYCLOAK_PORT}/realms/msservicerealm
+
+
+server:
+  port: 8080
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://root-eureka:admin@${EUREKA_SERVER}:8761/eureka
